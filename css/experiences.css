@@ -9,7 +9,7 @@
     top: 0;
     left: -45px;                    /* matches about-skill negative margins */
     right: -45px;                   /* matches about-skill negative margins */
-    height: 65%;                    /* ← how far it bleeds down — adjust this */
+    height: 35%;                    /* ← how far it bleeds down — adjust this */
     background-color: #242734;      /* exact about-skill background color */
     z-index: 0;
 }

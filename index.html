@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/about-skill.css">
     <link rel="stylesheet" href="css/experiences.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
@@ -218,6 +219,58 @@
                 </div>
             </div>
         </section>
+        <footer class="footer" id="contact">
+            <div class="content">
+                <div class="footer-container">
+
+                    <!-- LEFT -->
+                    <div class="footer-left">
+                        <h2>Interested?<br>Let's Talk.</h2>
+                        <p>Email me at</p>
+                        <a href="mailto:ralphrowel00@gmail.com" class="footer-email">
+                            ralphrowel00@gmail.com
+                        </a>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="footer-right">
+                        <h2>Estimate your project?<br>Let me know here.</h2>
+
+                        <!-- replace YOUR_FORM_ID with your Formspree ID when ready -->
+                        <form class="footer-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+                            <div class="form-field">
+                                <label>What's your name?</label>
+                                <input type="text" name="name" placeholder=" " required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Your fancy Email.</label>
+                                <input type="email" name="email" placeholder=" " required>
+                            </div>
+
+                            <div class="form-field">
+                                <label>Tell me about your project.</label>
+                                <div class="form-last-row">
+                                    <input type="text" name="project" required>
+                                    <div class="form-actions">
+                                        <div class="attach-btn"></div>  <!-- replace with icon later -->
+                                        <span class="form-arrow">→</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit">Send it →</button>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <p class="footer-bottom">© 2025 Ralph Rowel Dela Rosa. All rights reserved.</p>
+
+            </div>
+        </footer>
     </div>
 
 </body>

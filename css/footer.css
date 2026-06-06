@@ -1,0 +1,166 @@
+.footer {
+    background-color: #242734;
+    color: white;
+    padding: 80px 0 40px;
+    margin-left: -45px;
+    margin-right: -45px;
+    margin-bottom: -45px;           /* ← pulls footer flush to page bottom */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;                      /* ← gap between left and right — adjust this */
+    margin-bottom: 60px;
+}
+
+/* ---- LEFT ---- */
+.footer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-left h2 {
+    font-size: 36px;                /* ← heading size — adjust this */
+    line-height: 1.2;
+    margin: 0;
+}
+
+.footer-left p {
+    font-size: 14px;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.footer-email {
+    color: #F7C461;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.footer-email:hover {
+    opacity: 0.75;
+}
+
+/* ---- RIGHT ---- */
+.footer-right {
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footer-right h2 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* ---- FORM ---- */
+.footer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.form-field label {
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.form-field input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    padding: 8px 32px 8px 0;        /* right padding leaves room for arrow */
+    outline: none;
+    transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-field input:focus {
+    border-bottom-color: #F7C461;
+}
+
+.form-last-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    transition: border-color 0.2s ease;
+}
+
+.form-last-row input {
+    border-bottom: none;            /* border is now on the wrapper */
+    flex: 1;
+}
+
+.form-last-row:focus-within {
+    border-bottom-color: #F7C461;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.attach-btn {
+    width: 20px;                    /* ← swap with img tag when ready */
+    height: 20px;
+    background-color: #F7C461;      /* temporary placeholder */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-arrow {
+    color: #F7C461;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* ---- SUBMIT ---- */
+.footer-form button {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid #F7C461;
+    color: #F7C461;
+    padding: 12px 28px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-top: 8px;
+}
+
+.footer-form button:hover {
+    background-color: #F7C461;
+    color: #242734;
+}
+
+/* ---- BOTTOM ---- */
+.footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.35;
+    margin: 0;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
