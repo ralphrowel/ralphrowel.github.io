@@ -1,0 +1,106 @@
+.about-skill {
+    background-color: #242734;
+    color: white;
+    padding: 60px 0;
+    margin-left: -45px;
+    margin-right: -45px;
+    margin-bottom: 0px;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 70px;
+}
+
+.about-left {
+    flex: 2;
+}
+
+.about-left h2 {
+    color: #F7C461;
+    margin-bottom: 15px;
+}
+
+.about-left p {
+    font-size: 16px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.about-buttons {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-buttons button {
+    background-color: transparent;
+    border: 1px solid #F7C461;
+    color: #F7C461;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.about-buttons button:hover {
+    background-color: #F7C461;
+    color: #242734;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-container h2 {
+    color: #F7C461;
+    margin-bottom: 30px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    align-items: start;     /* each group only as tall as its content */
+}
+
+.skill-group {
+    min-width: 0;           /* prevents content from overflowing its column */
+}
+
+.skill-group h3 {
+    color: #F7C461;
+    margin-bottom: 6px;     /* slight bump so heading doesn't sit too tight */
+    font-size: 15px;
+    white-space: normal;    /* allows heading to wrap if needed */
+    word-break: break-word;
+}
+
+.skill-group ul {
+    padding-left: 18px;
+}
+
+.skill-group li {
+    margin-bottom: 0px;
+    line-height: 1.6;
+    opacity: 0.9;
+}

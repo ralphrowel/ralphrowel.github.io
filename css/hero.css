@@ -1,0 +1,130 @@
+/* =====================
+   HERO SECTION
+===================== */
+.hero {
+    position: relative;             /* image anchors to this */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;               /* stops image bleeding into about-skill */
+    min-height: 500px;              /* ← overall hero height — adjust this */
+    margin-top: 40px;
+}
+
+/* =====================
+   PHOTO — sits behind everything
+===================== */
+.hero-image {
+    position: absolute;
+    bottom: 0;                      /* ← anchored to bottom of hero */
+    left: 48%;                      /* ← horizontal position — adjust this */
+    transform: translateX(-65%);    /* ← fine-tune left/right centering — adjust this */
+    width: 420px;                   /* ← image width — adjust this */
+    height: 105%;                   /* ← image height — adjust this */
+    z-index: 1;                     /* behind both columns */
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;  /* flat bottom, rounded top */
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: translateX(-65%) scale(1.02); /* keeps position on hover */
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;           /* ← crop focus — change to 'center' if needed */
+    display: block;
+}
+
+/* =====================
+   LEFT SIDE — name, line, socials
+===================== */
+.hero-left {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+    margin-top: -100px;
+}
+
+.hero-left h1 {
+    margin: 0;
+    font-size: 58px;                /* ← name size — adjust this */
+    line-height: 1.05;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7); /* keeps name readable over photo */
+}
+
+/* GOLD LINE — underline of name */
+.hero-line {
+    width: 120px;
+    height: 3px;
+    background-color: #F7C461;
+}
+
+/* SOCIAL LINKS */
+.hero-socials {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.hero-socials a {
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: 0.2s ease;
+}
+
+.hero-socials a:hover {
+    opacity: 1;
+    color: #F7C461;
+}
+
+.hero-socials img {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s ease;
+}
+
+.hero-socials img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* =====================
+   RIGHT SIDE — intro text
+===================== */
+.hero-right {
+    position: absolute;             /* out of flex flow entirely */
+    right: 25;                       /* ← anchored to right edge of hero — adjust this */
+    top: 50%;
+    transform: translateY(-50%);    /* vertically centered */
+    width: 380px;                   /* ← fixed width so text doesn't sprawl — adjust this */
+    z-index: 2;
+}
+
+.hero-right h2 {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.hero-right h2:hover {
+    color: #F7C461;
+}
+
+.hero-right p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 380px;
+}

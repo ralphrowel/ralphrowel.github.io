@@ -1,0 +1,90 @@
+.experiences {
+    position: relative;
+    padding: 20px 0;
+}
+
+.experiences::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -45px;                    /* matches about-skill negative margins */
+    right: -45px;                   /* matches about-skill negative margins */
+    height: 65%;                    /* ← how far it bleeds down — adjust this */
+    background-color: #242734;      /* exact about-skill background color */
+    z-index: 0;
+}
+
+.experiences .content {
+    position: relative;
+    z-index: 1;
+}
+
+.experiences-header {
+    color: #F7C461;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+/* ---- CARDS LIST ---- */
+.experiences-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;                          /* ← spacing between cards — adjust this */
+}
+
+/* ---- SINGLE CARD ---- */
+.experience-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #424657;
+    border-radius: 0;                   /* ← removed rounded edges */
+    padding: 40px 48px;                 /* ← increased inner spacing */
+    height: 260px;                      /* ← taller card — adjust this */
+    box-sizing: border-box;
+}
+
+/* ---- LEFT: TEXT ---- */
+.experience-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+    padding-right: 40px;               /* ← gap between text and image — adjust this */
+}
+
+.experience-info h3 {
+    color: #F7C461;
+    font-size: 22px;                    /* ← bigger title */
+    margin: 0;
+}
+
+.experience-company {
+    font-size: 15px;                    /* ← bigger company name */
+    opacity: 0.6;
+    margin: 0;
+}
+
+.experience-info ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+
+.experience-info li {
+    font-size: 15px;                    /* ← bigger bullet text */
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+/* ---- RIGHT: IMAGE PLACEHOLDER ---- */
+.experience-image {
+    margin-top: -40px;              /* matches card padding-top */
+    margin-bottom: -40px;           /* matches card padding-bottom */
+    margin-right: -48px;            /* matches card padding-right */
+    width: 30%;                     /* ← how much of the card it covers — adjust this */
+    height: calc(100% + 80px);      /* compensates for the top + bottom negative margins */
+    background-color: #F7C461;
+    border-radius: 0;
+    flex-shrink: 0;
+}
