@@ -102,14 +102,21 @@
 /* ---- RIGHT: IMAGE ---- */
 .fp-image {
     position: relative;
-    width: 220px;                   /* ← image width — adjust this */
+    width: 300px;                   /* ← image width — adjust this */
     margin-top: -40px;              /* breaks out of card padding */
     margin-bottom: -40px;
     margin-right: -48px;
-    height: calc(100% + 80px);
+    height: 278px;
     flex-shrink: 0;
     cursor: pointer;
     overflow: hidden;
+}
+fp-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .fp-placeholder {
