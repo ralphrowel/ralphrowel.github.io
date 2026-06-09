@@ -8,8 +8,8 @@ const projects = {
     },
     timeseries: {
         images: [
-            'assets/projects/data-analysis/1.png',
             'assets/projects/data-analysis/2.png',
+            'assets/projects/data-analysis/1.png',
             'assets/projects/data-analysis/3.png'
         ]
     },
@@ -22,9 +22,9 @@ const projects = {
     },
     biome: {
         images: [
-            'assets/projects/animal-web/1.png',
+            'assets/projects/animal-web/3.png',
             'assets/projects/animal-web/2.png',
-            'assets/projects/animal-web/3.png'
+            'assets/projects/animal-web/1.png'
         ]
     },
     optical: {
