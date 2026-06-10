@@ -256,7 +256,7 @@
                         <h2>Estimate your project?<br>Let me know here.</h2>
 
                         <!-- replace YOUR_FORM_ID with your Formspree ID when ready -->
-                        <form class="footer-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <form class="footer-form" action="https://formspree.io/f/mlgklyyk" method="POST">
 
                             <div class="form-field">
                                 <label>What's your name?</label>
@@ -273,8 +273,11 @@
                                 <div class="form-last-row">
                                     <input type="text" name="project" required>
                                     <div class="form-actions">
-                                        <div class="attach-btn"></div>
-                                        <span class="form-arrow">→</span>
+                                        <span class="form-arrow">Attach a file (5mb max) →</span>
+                                        <label for="attach" class="attach-btn" title="Attach a file">
+                                            <img src="assets/icons/attachment.svg" alt="Attach File">
+                                            <input type="file" id="attach" name="attachment" hidden>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
