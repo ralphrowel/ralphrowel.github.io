@@ -1,16 +1,19 @@
 .mobile-notice {
     position: fixed;
     inset: 0;
-
-    display: none;
+    display: none;                  /* hidden by default on desktop */
     justify-content: center;
     align-items: center;
-
     background-color: rgba(0, 0, 0, 0.85);
-
     z-index: 9999;
-
     padding: 20px;
+}
+
+/* shows automatically on mobile — no JS needed */
+@media (max-width: 768px) {
+    .mobile-notice {
+        display: flex;
+    }
 }
 
 .mobile-notice-card {
