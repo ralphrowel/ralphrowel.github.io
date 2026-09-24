@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Quality &amp; Cleaning Platform | Ralph Rowel Dela Rosa</title>
+  <meta name="description"
+    content="Data Quality &amp; Cleaning Platform: An automated data profiling, validation, and deterministic versioned cleaning platform built with Python, Django REST Framework, React, PostgreSQL, and Docker.">
+  <meta name="author" content="Ralph Rowel Dela Rosa">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #0e0d0b;
+      --accent:      #F0B84C;
+      --accent-muted:#C99A3E;
+      --text:        #E8DFC8;
+      --text-muted:  #9C9184;
+      --glass-bg:    rgba(30, 28, 22, 0.72);
+      --glass-border:rgba(240, 184, 76, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34.641' height='60' viewBox='0 0 34.641 60'%3E%3Cdefs%3E%3Cpath id='hx' d='M0 -20 17.32 -10 17.32 10 0 20 -17.32 10 -17.32 -10Z' fill='none' stroke='%23C99A3E' stroke-opacity='.07' stroke-width='1'/%3E%3C/defs%3E%3Cuse href='%23hx'/%3E%3Cuse href='%23hx' x='-34.641'/%3E%3Cuse href='%23hx' x='34.641'/%3E%3Cuse href='%23hx' y='-60'/%3E%3Cuse href='%23hx' y='60'/%3E%3Cuse href='%23hx' x='-34.641' y='-60'/%3E%3Cuse href='%23hx' x='34.641' y='-60'/%3E%3Cuse href='%23hx' x='-34.641' y='60'/%3E%3Cuse href='%23hx' x='34.641' y='60'/%3E%3Cuse href='%23hx' x='-17.32' y='-30'/%3E%3Cuse href='%23hx' x='17.32' y='-30'/%3E%3Cuse href='%23hx' x='-17.32' y='30'/%3E%3Cuse href='%23hx' x='17.32' y='30'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 6rem;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(240, 184, 76, 0.28);
+      border-radius: 8px;
+      padding: 0.45rem 1rem;
+      background: rgba(240, 184, 76, 0.04);
+      transition: background 0.2s, border-color 0.2s;
+      margin-bottom: 2.5rem;
+    }
+    .back-btn:hover { background: rgba(240,184,76,0.10); border-color: rgba(240,184,76,0.50); }
+
+    /* Hero */
+    .project-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.55s cubic-bezier(0.22, 0.68, 0, 1.12) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 10px;
+      clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .project-title span { color: var(--accent); }
+
+    .project-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.55rem 1.25rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-github:hover { background: #ffcc66; transform: translateY(-1px); }
+
+    /* Cards */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Metrics */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .metric-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(240,184,76,0.10);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .metric-item:hover { border-color: rgba(240,184,76,0.32); background: rgba(240,184,76,0.04); }
+    .metric-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.35rem; }
+    .metric-label { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; color: var(--text-muted); line-height: 1.4; }
+
+    /* Summary */
+    .summary-text { font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; }
+    .summary-text strong { color: var(--text); font-weight: 500; }
+
+    /* Architecture / Pipeline */
+    .arch-layers { display: flex; flex-direction: column; gap: 0.75rem; }
+    .arch-layer {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(240,184,76,0.09);
+      border-radius: 10px; padding: 1rem 1.1rem;
+      transition: border-color 0.25s;
+    }
+    .arch-layer:hover { border-color: rgba(240,184,76,0.28); }
+    .arch-layer-pip { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 0.45rem; flex-shrink: 0; box-shadow: 0 0 8px rgba(240,184,76,0.5); }
+    .arch-layer-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .arch-layer-desc { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--text-muted); line-height: 1.55; }
+
+    /* Tech stack */
+    .tech-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .tech-group-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .badges-wrap { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .badge { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: rgba(240,184,76,0.08); border: 1px solid rgba(240,184,76,0.24); border-radius: 4px; padding: 0.22rem 0.55rem; }
+
+    /* Features */
+    .features-list { display: flex; flex-direction: column; gap: 0.7rem; }
+    .feature-item { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .feature-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .feature-text { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+    .feature-text strong { font-weight: 500; color: var(--text); }
+
+    /* Test bar */
+    .test-bar-wrap { margin: 1rem 0 0.5rem; }
+    .test-bar-label { display: flex; justify-content: space-between; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .test-bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .test-bar-fill { height: 100%; background: linear-gradient(90deg, #10b981, var(--accent)); border-radius: 4px; animation: barGrow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; animation-delay: 0.3s; }
+    @keyframes barGrow { from { width: 0; } to { width: var(--bar-width, 100%); } }
+
+    /* Footer CTA */
+    .footer-cta { margin-top: 2.5rem; padding: 2rem; text-align: center; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-radius: 16px; animation: fadeUp 0.55s ease both; }
+    .footer-cta p { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <a class="back-btn" id="back-to-portfolio" href="../index.html#projects" aria-label="Return to portfolio projects">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Portfolio
+    </a>
+
+    <header class="project-hero">
+      <p class="eyebrow">04 / Project Case Study</p>
+      <h1 class="project-title"><span>Data Quality</span> &amp; Cleaning Platform</h1>
+      <p class="project-subtitle">
+        An automated enterprise platform for ingesting raw CSV/Excel files, detecting data quality anomalies, executing deterministic cleaning pipelines, and generating versioned datasets with composite quality audit scores.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-github" href="https://github.com/ralphrowel/Data-Quality-and-Cleaning-Platform" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+          View on GitHub &#8599;
+        </a>
+      </div>
+    </header>
+
+    <div class="glass-card" style="animation-delay:0.05s">
+      <p class="card-title">Executive Summary</p>
+      <p class="summary-text">
+        Real-world business data arrives messy, inconsistent, and error-prone. The <strong>Data Quality &amp; Cleaning Platform</strong> provides an automated, deterministic solution for enterprise data teams: raw CSV and Excel datasets are profiled immediately upon upload, scanning for missing values, duplicate entries, schema deviations, and invalid field formats.<br><br>
+        Rather than destructively overwriting original records, the platform produces <strong>immutable, versioned datasets</strong> (Raw &rarr; Validated &rarr; Normalized &rarr; Production Cleaned) with full audit trails. Every processed dataset generates an automated <strong>composite quality score</strong> across completeness, validity, uniqueness, and consistency, ready for direct integration into <strong>Power BI dashboards</strong> and downstream analytical data marts.
+      </p>
+    </div>
+
+    <div class="glass-card" style="animation-delay:0.10s">
+      <p class="card-title">Key Engineering Metrics</p>
+      <div class="metrics-grid">
+        <div class="metric-item"><div class="metric-value">63</div><div class="metric-label">Automated unit and integration test suites passing</div></div>
+        <div class="metric-item"><div class="metric-value">100%</div><div class="metric-label">Deterministic versioned cleaning (Raw &rarr; Cleaned)</div></div>
+        <div class="metric-item"><div class="metric-value">Multi-Format</div><div class="metric-label">Ingests CSV, Excel (.xlsx, .xls), and delimited records</div></div>
+        <div class="metric-item"><div class="metric-value">Dockerized</div><div class="metric-label">Production compose stack: Django REST, React/Nginx, Postgres</div></div>
+        <div class="metric-item"><div class="metric-value">Power BI</div><div class="metric-label">Composite quality score export for BI dashboards</div></div>
+        <div class="metric-item"><div class="metric-value">Zero Overwrite</div><div class="metric-label">Immutable version history protects source baseline data</div></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="animation-delay:0.15s">
+      <p class="card-title">End-to-End Cleaning &amp; Profiling Pipeline</p>
+      <div class="arch-layers">
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">1. Multi-Format Ingestion &amp; Schema Parser</div><div class="arch-layer-desc">Multipart upload validation with file size limits, MIME type enforcement, header detection, and initial row/column structural profiling.</div></div></div>
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">2. Data Profiling &amp; Anomaly Detection Engine</div><div class="arch-layer-desc">Deep scan evaluating column nullness ratios, duplicate rows, regex format compliance (email, phone, dates), outlier boundaries, and type inconsistencies.</div></div></div>
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">3. Deterministic Cleaning &amp; Transformation Pipeline</div><div class="arch-layer-desc">Rule-based transformation stages: whitespace trimming, standardizing date formats (ISO-8601), imputing missing values, casing normalization, and duplicate deduplication.</div></div></div>
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">4. Immutable Dataset Versioning Layer</div><div class="arch-layer-desc">Each execution generates a distinct version snapshot with change deltas, allowing users to compare raw versus cleaned records side by side.</div></div></div>
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">5. Composite Quality Score Generator</div><div class="arch-layer-desc">Weighted algorithmic assessment evaluating Completeness (30%), Validity (30%), Uniqueness (20%), and Consistency (20%) formatted for Power BI ingestion.</div></div></div>
+        <div class="arch-layer"><div class="arch-layer-pip"></div><div><div class="arch-layer-name">6. Containerized Infrastructure Layer</div><div class="arch-layer-desc">Docker Compose multi-container environment: Gunicorn/Django REST Framework backend, Nginx-served React frontend, PostgreSQL with persistent volumes and health checks.</div></div></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="animation-delay:0.20s">
+      <p class="card-title">Technology Stack</p>
+      <div class="tech-groups">
+        <div><div class="tech-group-title">Backend</div><div class="badges-wrap"><span class="badge">Python</span><span class="badge">Django REST Framework</span><span class="badge">Pandas</span><span class="badge">NumPy</span><span class="badge">Gunicorn</span></div></div>
+        <div><div class="tech-group-title">Frontend</div><div class="badges-wrap"><span class="badge">React</span><span class="badge">Vite</span><span class="badge">Tailwind CSS</span><span class="badge">Lucide Icons</span></div></div>
+        <div><div class="tech-group-title">Database &amp; Ops</div><div class="badges-wrap"><span class="badge">PostgreSQL</span><span class="badge">Docker</span><span class="badge">Docker Compose</span><span class="badge">Nginx</span></div></div>
+        <div><div class="tech-group-title">Analytics &amp; Testing</div><div class="badges-wrap"><span class="badge">Power BI Ready</span><span class="badge">Pytest / Unittest (63 tests)</span><span class="badge">Openpyxl</span></div></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="animation-delay:0.25s">
+      <p class="card-title">Key Architectural Features</p>
+      <div class="features-list">
+        <div class="feature-item"><span class="feature-icon">&#x1F9FE;</span><div class="feature-text"><strong>Automated Profiling &amp; Anomaly Detection</strong> &mdash; Ingests CSV and Excel files, analyzes missing values, duplicates, out-of-range values, and formatting discrepancies in seconds.</div></div>
+        <div class="feature-item"><span class="feature-icon">&#x1F9F9;</span><div class="feature-text"><strong>Deterministic Cleaning Engine</strong> &mdash; Normalizes, validates, and type-converts records using reproducible pipeline steps with zero manual spreadsheet editing.</div></div>
+        <div class="feature-item"><span class="feature-icon">&#x1F4D6;</span><div class="feature-text"><strong>Immutable Versioned Datasets</strong> &mdash; Generates versioned datasets (Raw &rarr; Cleaned) rather than in-place overwriting, preserving source integrity and full compliance traceability.</div></div>
+        <div class="feature-item"><span class="feature-icon">&#x1F4CA;</span><div class="feature-text"><strong>Composite Data Quality Scoring</strong> &mdash; Calculates an aggregate health score (0&ndash;100%) and dimension-level metrics tailored for executive dashboards and Power BI integration.</div></div>
+        <div class="feature-item"><span class="feature-icon">&#x1F433;</span><div class="feature-text"><strong>Production Docker Compose Setup</strong> &mdash; Containerized multi-service deployment with Gunicorn/Django REST backend, Nginx-served React frontend, PostgreSQL with persistent volumes and health checks.</div></div>
+      </div>
+    </div>
+
+    <div class="glass-card" style="animation-delay:0.30s">
+      <p class="card-title">Automated Test Harness</p>
+      <p class="summary-text" style="margin-bottom:1.25rem;">
+        63 automated unit and integration tests verifying every layer of the platform: multi-format parsers, regex validation rules, composite score calculations, database migrations, and Docker health-check contracts.
+      </p>
+      <div class="test-bar-wrap">
+        <div class="test-bar-label">
+          <span>Test Suite Results</span>
+          <span>63 Passed &nbsp;&middot;&nbsp; 0 Failed</span>
+        </div>
+        <div class="test-bar-track">
+          <div class="test-bar-fill" style="--bar-width: 100%"></div>
+        </div>
+      </div>
+      <p class="summary-text" style="margin-top:0.75rem; font-size:0.78rem;">
+        100% test pass rate across parser validations, pipeline idempotency, and API endpoints.
+      </p>
+    </div>
+
+    <div class="footer-cta" style="animation-delay:0.35s">
+      <p>Explore the full source code, test suites, and Docker setup on GitHub.</p>
+      <a class="btn-github" href="https://github.com/ralphrowel/Data-Quality-and-Cleaning-Platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        View on GitHub &#8599;
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var backBtn = document.getElementById('back-to-portfolio');
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          if (window.history.length > 1 && document.referrer && (document.referrer.indexOf('index.html') !== -1 || document.referrer.slice(-1) === '/' || document.referrer.indexOf('bumblebee') !== -1)) {
+            e.preventDefault();
+            window.history.back();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

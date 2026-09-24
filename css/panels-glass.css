@@ -490,6 +490,41 @@
   transform: translateY(-1px);
 }
 
+.panel-project-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.panel-project-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #12100b;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.22rem 0.65rem;
+  background: var(--accent);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  position: relative;
+  z-index: 5;
+}
+
+.panel-project-demo:hover {
+  background: #fcd34d;
+  border-color: #fcd34d;
+  box-shadow: 0 0 10px rgba(240, 184, 76, 0.4);
+  transform: translateY(-1px);
+}
+
 .panel-project-status-pill {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem;
